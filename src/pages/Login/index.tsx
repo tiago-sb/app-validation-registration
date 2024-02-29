@@ -9,11 +9,14 @@ import { defaultValues, IFormLogin } from "./types";
 
 const schema = yup
   .object({
-    email: yup.string().email("E-mail inválido").required("Campo obrigatório"),
+    email: yup.string()
+      .email("E-mail inválido")
+      .required("Campo obrigatório"),
     password: yup
       .string()
       .min(6, "Mínimo 6 caracteres")
       .required("Campo obrigatório")
+      .matches(/[A-Z]/, 'A senha deve conter pelo menos uma letra maiúscula')
   })
   .required();
 
@@ -49,7 +52,7 @@ const Login = () => {
             errorMessage={errors?.password?.message}
           />
           <Spacing />
-          <Button title="Entrar" />
+          <Button title="Entrar" disabled={isValid}/>
         </Column>
       </LoginContainer>
     </Container>
