@@ -1,5 +1,6 @@
 export interface IButtonProps {
-    title: string;
-    onClick?: () => void;
-    disabled: boolean;
+  title: string;
+  onClick?: () => void;
+  disabled: boolean;
+  type: string;
 }
