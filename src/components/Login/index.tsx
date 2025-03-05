@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { Container, LoginContainer, Column, Spacing, Title } from "./styles";
 import { defaultValues, IFormLogin } from "./types";
 import { Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup
   .object({
@@ -23,6 +24,8 @@ const schema = yup
   .required();
 
 const Login = () => {
+  const navigate = useNavigate()
+
   const {
     control,
     formState: { errors, isValid },
@@ -36,20 +39,27 @@ const Login = () => {
 
   const onSubmit = async (data: IFormLogin) => {
     try {
-      const response = await fetch(`http://localhost:5000/users?email=${data.email}&password=${data.password}`)
-      
+      const response = await fetch(`http://localhost:5000/users`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+      const conteudo_db = await response.json()
+
       if (response.ok) {
-        const users = await response.json()
-  
-        if (users.length > 0) {
+        const userMatches = conteudo_db.find((user: IFormLogin) => user.email === data.email && user.password === data.password)
+        
+        if (userMatches) {
           alert('Usuário logado com sucesso!')
-          window.location.href = '/home'
+          navigate('/home')
         } else {
-          alert('Usuário desconhecido')
+          alert('E-mail ou nome não correspondem.')
+          window.location.reload()
         }
       }
     } catch (error) {
-      alert('Erro ao logar usuário');
+      alert('Erro ao logar usuário')
     }
   }
 

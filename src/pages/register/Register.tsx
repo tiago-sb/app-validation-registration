@@ -7,7 +7,7 @@ import { defaultValues, IFormLogin } from '../../components/Login/types';
 import { Container } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { Button } from '../../components/Button/';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const schema = yup.object({
   email: yup
@@ -22,6 +22,8 @@ const schema = yup.object({
 }).required();
 
 const Register = () => {
+  const navigate = useNavigate()
+  
   const {
     control,
     formState: { errors, isValid },
@@ -44,7 +46,8 @@ const Register = () => {
       })
 
       if (response.ok) {
-        alert('Usuário cadastrado com sucesso!');
+        alert('Usuário cadastrado com sucesso!')
+        navigate('/home')
       }
     } catch (error) {
       alert('Erro ao cadastrar usuário')
