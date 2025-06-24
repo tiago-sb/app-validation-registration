@@ -17,11 +17,12 @@
     "react-scripts": "^5.0.1",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4",
-    "yup": "^0.32.11" 
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "render-build": "npm ci && npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "dev": "json-server --watch db.json --port 5000"
@@ -52,5 +53,8 @@
     "@types/styled-components": "^5.1.26",
     "json-server": "^1.0.0-beta.3",
     "typescript": "^4.9.5"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }
