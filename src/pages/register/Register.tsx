@@ -39,10 +39,8 @@ const Register = () => {
     try {
       const response = await fetch('https://app-validation-registration.onrender.com/register', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
       })
 
       if (response.ok) {

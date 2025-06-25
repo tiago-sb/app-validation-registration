@@ -40,10 +40,9 @@ const Login = () => {
   const onSubmit = async (data: IFormLogin) => {
     try {
       const response = await fetch(`https://app-validation-registration.onrender.com/login`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        }
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
       })
       const conteudo_db = await response.json()
 
