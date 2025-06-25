@@ -44,6 +44,7 @@ const Login = () => {
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(data)
       })
+      
       const conteudo_db = await response.json()
 
       if (response.ok) {

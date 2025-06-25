@@ -42,7 +42,6 @@ const Register = () => {
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(data)
       })
-
       if (response.ok) {
         alert('Usuário cadastrado com sucesso!')
         navigate('/home')
