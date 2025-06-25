@@ -1,3 +1,9 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": "f037",
+      "email": "teste@gmail.com",
+      "password": "Ttestee123"
+    }
+  ]
 }
